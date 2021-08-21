@@ -1,6 +1,8 @@
 <?php
+use App\Http\Controllers\ChangePass;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 
 
@@ -14,15 +16,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('update/contact/{id}', [ContactController::class, 'UpdateContact']);
     Route::get('contact/delete/{id}', [ContactController::class, 'DeleteContact']);
 
-    //Admin All route
+    //Admin All routes
     Route::get('home/slider', [HomeController::class, 'HomeSlider'])->name('home.slider');
     Route::get('add/slider', [HomeController::class, 'AddSlider'])->name('add.slider');
     Route::post('store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
-    Route::get('slider/edit/{id}', [HomeController::class, 'Edit']);
-    Route::post('slider/update/{id}', [HomeController::class, 'Update']);
-    Route::get('slider/delete/{id}', [HomeController::class, 'Delete']);
-
     
+
+    //Home about All routes
+    
+    
+
+    #password change and user profile route
+    Route::get('/user/password', [ChangePass::class, 'ChangePassword'])->name('change.password');
+    Route::POST('/password/update', [ChangePass::class, 'UpdatePassword'])->name('password.update');
+
+    //Profile Update
+    Route::get('/user/profile', [ChangePass::class, 'UserProfile'])->name('user.profile');
+    Route::post('/user/profile/update', [ChangePass::class, 'ProfileUpdate'])->name('update.user.profile');
+
 });
 
 // require __DIR__ . '/auth.php';

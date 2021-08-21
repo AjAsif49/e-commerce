@@ -6,7 +6,7 @@
         
     <div class= "container">
         <div class="row">
-
+   
         <h4>Home About</h4>
         <a href="{{ route('add.about') }}"><button class= 'btn btn-info'>Add About</button></a>
 

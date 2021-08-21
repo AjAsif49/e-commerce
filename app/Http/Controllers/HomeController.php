@@ -36,11 +36,14 @@ class HomeController extends Controller
         return Redirect()->route('home.slider')->with('success', 'Slider Inserted Successfully');
 
     }
-    public function Edit($id){
+
+
+    public function EditSlider($id){
         $Sliders = Slider::find($id);
         return view('admin.pages.slider.edit', compact('Sliders'));
 
     }
+    
 
     public function Update(Request $request, $id){
         $validatedData = $request->validate([
@@ -73,7 +76,6 @@ class HomeController extends Controller
                 'created_at' => Carbon::now()
             ]);
 
-        // return Redirect()->back()->with('success', 'Brand Updated Successfully');
         return Redirect()->route('home.slider')->with('success', 'Slider updated Successfully');
 
     }
@@ -84,7 +86,6 @@ class HomeController extends Controller
                 'description' => $request->description,
                 'created_at' => Carbon::now()
             ]);
-            // return Redirect()->back()->with('success', 'Brand Updated Successfully');
             return Redirect()->route('home.slider')->with('success', 'Slider updated Successfully');
 
         }

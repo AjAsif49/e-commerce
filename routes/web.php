@@ -73,14 +73,20 @@ Route::post('/image/add', [MultiImageController::class, 'StoreImg'])->name('stor
 
 
 //Home about All routes
-Route::get('/home/about', [AboutController::class, 'HomeAbout'])->name('home.about');
+Route::get('admin/home/about', [AboutController::class, 'HomeAbout'])->name('home.about');
 Route::get('/add/about', [AboutController::class, 'AddAbout'])->name('add.about');
 Route::post('/store/about', [AboutController::class, 'StoreAbout'])->name('store.about');
-Route::get('/about/edit/{id}', [AboutController::class, 'EditAbout']);
+Route::get('about/edit/{id}', [AboutController::class, 'EditAbout']);
 Route::post('/update/homeabout/{id}', [AboutController::class, 'UpdateAbout']);
 Route::get('/about/delete/{id}', [AboutController::class, 'DeleteAbout']);
 
 
+
+//Admin All routes
+
+Route::get('/slider/edit/{id}', [HomeController::class, 'EditSlider']);
+Route::post('slider/update/{id}', [HomeController::class, 'Update']);
+Route::get('slider/delete/{id}', [HomeController::class, 'Delete']);
 
 //Portfolio 
 Route::get('/portfolio', [PortfolioController::class, 'Portfolio'])->name('portfolio');
@@ -110,6 +116,3 @@ Route::get('/user/logout', [BrandController::class, 'logout'])->name('user.logou
 
 
 
-#password change and user profile route
-Route::get('/user/password', [ChangePass::class, 'ChangePassword'])->name('change.password');
-Route::POST('/password/update', [ChangePass::class, 'UpdatePassword'])->name('password.update');

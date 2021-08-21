@@ -8,7 +8,7 @@
             <h2>Edit About</h2>
         </div>
         <div class="card-body">
-        <form action="{{ url('update/homeabouut/'.$homeabout->id) }}" method="POST">
+        <form action="{{ url('/update/homeabout/'.$homeabout->id) }}" method="POST">
             @csrf
                 <div class="form-group">
                     <label for="exampleFormControlInput1"> Title</label>

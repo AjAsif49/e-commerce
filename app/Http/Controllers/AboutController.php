@@ -26,7 +26,7 @@ class AboutController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return Redirect()->route('home.pages.about')->with('success', 'About Added Successfully');
+        return Redirect()->route('home.about')->with('success', 'About Added Successfully');
 
     }
 
@@ -39,9 +39,10 @@ class AboutController extends Controller
         $update = HomeAbout::find($id)->update([
             'title'=> $request->title,
             'short_des' => $request->short_des,
-            'long_des' => $request->long_des,        ]);
+            'long_des' => $request->long_des,      
+        ]);
 
-        return Redirect()->route('home.pages.about')->with('success', 'About Updated Successfully');
+        return Redirect()->route('home.about')->with('success', 'About Updated Successfully');
 
     }
 

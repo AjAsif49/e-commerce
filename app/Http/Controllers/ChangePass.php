@@ -35,4 +35,28 @@ class ChangePass extends Controller
 
         }
     }
+
+    public function UserProfile(){
+        if(Auth::user()){
+            $user = User::find(Auth::user()->id);
+            if($user){
+                return view('admin.pages.profile.update_profile', compact('user'));
+            }
+        }
+    }
+
+    public function ProfileUpdate(Request $request){
+        $user = User::find(Auth::user()->id);
+        if($user){
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+            $user->profile_photo_url = $request['profile_photo_url'];
+
+            $user->save();
+            return redirect()->back()->with('success', 'profile Updated Successfully');
+        }else{
+            return redirect()->back();
+        }
+
+    }
 }

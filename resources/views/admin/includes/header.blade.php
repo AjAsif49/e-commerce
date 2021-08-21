@@ -92,7 +92,7 @@
                         </li>
 
                         <li>
-                            <a href="profile.html">
+                            <a href="{{ route('user.profile') }}">
                                 <i class="mdi mdi-account"></i> My Profile
                             </a>
                         </li>
