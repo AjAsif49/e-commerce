@@ -26,6 +26,7 @@
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css') }}" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 
     <!-- FAVICON -->
@@ -106,7 +107,30 @@
     <script src="{{ asset('backend/assets/js/date-range.js') }}"></script>
     <script src="{{ asset('backend/assets/js/map.js') }}"></script>
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+    <script>
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}"
+        switch(type){
+            case 'info':
+            toastr.info("{{ session::get('message') }}");
+            break;
+
+            case 'warning':
+            toastr.warning("{{ session::get('message') }}");
+            break;
+
+            case 'success':
+            toastr.success("{{ session::get('message') }}");
+            break;
+
+            case 'error':
+            toastr.error("{{ session::get('message') }}");
+            break;
+        }
+        @endif
+    </script>
 
 
 

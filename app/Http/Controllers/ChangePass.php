@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
 use Auth;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class ChangePass extends Controller
 {
@@ -50,9 +51,12 @@ class ChangePass extends Controller
         if($user){
             $user->name = $request['name'];
             $user->email = $request['email'];
-            $user->profile_photo_url = $request['profile_photo_url'];
+            $user->profile_photo_path = $request['profile_photo_path'];
 
             $user->save();
+
+           
+
             return redirect()->back()->with('success', 'profile Updated Successfully');
         }else{
             return redirect()->back();
@@ -60,3 +64,4 @@ class ChangePass extends Controller
 
     }
 }
+

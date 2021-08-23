@@ -16,12 +16,8 @@
     <div class="card-body">
         <form  method="POST" action="{{ route('update.user.profile') }}" class="form-pill" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="old_image" value="{{ $user->profile_photo_path }}">
 
-
-            <input type="hidden" name="old_image" value="{{ $user->profile_photo_url }}">
-
-
-        
 
             <div class="form-group" >
                 <label for="exampleFormControlPassword3">User Name</label>
@@ -32,6 +28,16 @@
                 <label for="exampleFormControlPassword3">User Email</label>
                 <input type="email" class="form-control" name="email" value="{{ $user['email'] }}" >               
             </div>
+
+            {{-- Profile Photo --}}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">User Image</label>
+                <input type="file" name="profile_photo_path" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $user['profile_photo_path'] }}">
+                
+                
+            
+              </div>
+              {{-- P.P. --}}
 
             <button type="submit" class="btn btn-primary btn-default" > Update Profile </button>
         </form>

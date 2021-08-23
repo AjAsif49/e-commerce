@@ -43,7 +43,7 @@ class HomeController extends Controller
         return view('admin.pages.slider.edit', compact('Sliders'));
 
     }
-    
+     
 
     public function Update(Request $request, $id){
         $validatedData = $request->validate([
